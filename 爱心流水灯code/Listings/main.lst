@@ -1,0 +1,253 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              03/11/2025 21:21:25 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\SOFTWARE\Keil\Core\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Li
+                    -stings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          
+   3          
+   4          typedef unsigned char uchar;
+   5          typedef unsigned int uint;
+   6          
+   7          
+   8          void Delay_ms(unsigned int xms);
+   9          
+  10          void clock_wise(void);
+  11          void anticlock_wise(void);
+  12          void all_dance(void);
+  13          void two_flanks(void);
+  14          void breath_effect(void);
+  15          void cross_flash(void);
+  16          void random_flash(void);
+  17          void heartbeat(void);
+  18          void wave_effect(void);
+  19          void marquee(void);
+  20          void gradient_blink(void);
+  21          void spiral(void);
+  22          
+  23          void main()
+  24          {
+  25   1          while(1)
+  26   1          {   
+  27   2              Delay_ms(1000);
+  28   2              clock_wise();
+  29   2              Delay_ms(60);
+  30   2              anticlock_wise();
+  31   2              Delay_ms(60);
+  32   2              two_flanks();
+  33   2              Delay_ms(60);
+  34   2              all_dance();
+  35   2              Delay_ms(60);
+  36   2              breath_effect();    // 新增呼吸效果
+  37   2              Delay_ms(60);
+  38   2              cross_flash();      // 新增交叉闪烁
+  39   2              Delay_ms(60);
+  40   2              random_flash();     // 新增随机闪烁
+  41   2              Delay_ms(60);
+  42   2              heartbeat();        // 新增心跳效果
+  43   2              wave_effect();      // 新增波浪效果
+  44   2              Delay_ms(60);
+  45   2              marquee();          // 新增跑马灯
+  46   2              Delay_ms(60);
+  47   2              gradient_blink();   // 新增渐变闪烁
+  48   2              Delay_ms(60);
+  49   2              spiral();           // 新增螺旋闪烁
+  50   2          }
+  51   1      }
+  52          
+  53          //12m晶振频率，毫秒级延时
+  54          void Delay_ms(uint xms)
+C51 COMPILER V9.60.7.0   MAIN                                                              03/11/2025 21:21:25 PAGE 2   
+
+  55          {
+  56   1        uchar i, j;
+  57   1        while(xms)
+  58   1        {
+  59   2          i = 2;
+  60   2          j = 239;
+  61   2          do
+  62   2          {
+  63   3            while (--j);
+  64   3          } while (--i);
+  65   2          xms--;
+  66   2        }
+  67   1      }
+  68          //全体led闪烁
+  69          void all_dance(void){
+  70   1          P0=0x00;P1=0x00;P2=0x00;P3=0x00;
+  71   1          Delay_ms(500);
+  72   1          P0=0xff;P1=0xff;P2=0xff;P3=0xff;
+  73   1          Delay_ms(500);
+  74   1      }
+  75          //顺时针流水灯
+  76          void clock_wise(void){
+  77   1          P1=0x7F;Delay_ms(50);P1=0xBF;Delay_ms(50);P1=0xDF;Delay_ms(50);P1=0xEF;Delay_ms(50);
+  78   1          P1=0xF7;Delay_ms(50);P1=0xFB;Delay_ms(50);P1=0xFD;Delay_ms(50);P1=0xFE;Delay_ms(50);
+  79   1          P1=0xFF;Delay_ms(50);
+  80   1          
+  81   1          P0=0xFD;Delay_ms(50);P0=0xFE;Delay_ms(50);P0=0xFB;Delay_ms(50);P0=0xF7;Delay_ms(50);
+  82   1          P0=0xEF;Delay_ms(50);P0=0xDF;Delay_ms(50);P0=0xBF;Delay_ms(50);P0=0x7F;Delay_ms(50);
+  83   1          P0=0xFF;Delay_ms(50);
+  84   1          
+  85   1          P2=0x7f;Delay_ms(50);P2=0xBF;Delay_ms(50);P2=0xDF;Delay_ms(50);P2=0xEF;Delay_ms(50);
+  86   1          P2=0xF7;Delay_ms(50);P2=0xFB;Delay_ms(50);P2=0xFE;Delay_ms(50);P2=0xFD;Delay_ms(50);
+  87   1          P2=0xFF;Delay_ms(50);
+  88   1          
+  89   1          P3=0x7f;Delay_ms(50);P3=0xBF;Delay_ms(50);P3=0xDF;Delay_ms(50);P3=0xEF;Delay_ms(50);
+  90   1          P3=0xF7;Delay_ms(50);P3=0xFB;Delay_ms(50);P3=0xFD;Delay_ms(50);P3=0xFE;Delay_ms(50);
+  91   1          P3=0xFF;Delay_ms(50);
+  92   1      }
+  93          //逆时针流水灯
+  94          void anticlock_wise(void){
+  95   1          P3=0xFE;Delay_ms(50);P3=0xFD;Delay_ms(50);P3=0xFB;Delay_ms(50);P3=0xF7;Delay_ms(50);
+  96   1          P3=0xEF;Delay_ms(50);P3=0xDF;Delay_ms(50);P3=0xBF;Delay_ms(50);P3=0x7F;Delay_ms(50);
+  97   1          P3=0xFF;Delay_ms(50);
+  98   1          
+  99   1          P2=0xFD;Delay_ms(50);P2=0xFE;Delay_ms(50);P2=0xFB;Delay_ms(50);P2=0xF7;Delay_ms(50);
+ 100   1          P2=0xEF;Delay_ms(50);P2=0xDF;Delay_ms(50);P2=0xBF;Delay_ms(50);P2=0x7f;Delay_ms(50);
+ 101   1          P2=0xFF;Delay_ms(50);
+ 102   1          
+ 103   1          P0=0x7F;Delay_ms(50);P0=0xBF;Delay_ms(50);P0=0xDF;Delay_ms(50);P0=0xEF;Delay_ms(50);
+ 104   1          P0=0xF7;Delay_ms(50);P0=0xFB;Delay_ms(50);P0=0xFE;Delay_ms(50);P0=0xFD;Delay_ms(50);
+ 105   1          P0=0xFF;Delay_ms(50);
+ 106   1          
+ 107   1          P1=0xFE;Delay_ms(50);P1=0xFD;Delay_ms(50);P1=0xFB;Delay_ms(50);P1=0xF7;Delay_ms(50);
+ 108   1          P1=0xEF;Delay_ms(50);P1=0xDF;Delay_ms(50);P1=0xBF;Delay_ms(50);P1=0x7F;Delay_ms(50);
+ 109   1          P1=0xFF;Delay_ms(50);
+ 110   1      }
+ 111          //两侧同时流水
+ 112          void two_flanks(void){
+ 113   1          P1=0x7F;P3=0xFE;Delay_ms(50);P1=0xBF;P3=0xFD;Delay_ms(50);P1=0xDF;P3=0xFB;Delay_ms(50);P1=0xEF;P3=0xF7;D
+             -elay_ms(50);
+ 114   1          P1=0xF7;P3=0xEF;Delay_ms(50);P1=0xFB;P3=0xDF;Delay_ms(50);P1=0xFD;P3=0xBF;Delay_ms(50);P1=0xFE;P3=0x7F;D
+             -elay_ms(50);
+C51 COMPILER V9.60.7.0   MAIN                                                              03/11/2025 21:21:25 PAGE 3   
+
+ 115   1          P1=0xFF;P3=0xFF;Delay_ms(50);
+ 116   1      
+ 117   1          P0=0xFD;P2=0xFD;Delay_ms(50);P0=0xFE;P2=0xFE;Delay_ms(50);P0=0xFB;P2=0xFB;Delay_ms(50);P0=0xF7;P2=0xF7;D
+             -elay_ms(50);
+ 118   1          P0=0xEF;P2=0xEF;Delay_ms(50);P0=0xDF;P2=0xDF;Delay_ms(50);P0=0xBF;P2=0xBF;Delay_ms(50);P0=0x7F;P2=0x7F;D
+             -elay_ms(50);
+ 119   1          P0=0xFF;P2=0xFF;Delay_ms(50);
+ 120   1      }
+ 121          
+ 122          // 新增效果1：呼吸灯效果（所有LED渐变亮度）
+ 123          void breath_effect(void) {
+ 124   1          uchar i;
+ 125   1        
+ 126   1          for(i=0; i<5; i++) {
+ 127   2              P0=0xFF<<i; P1=0xFF<<i; P2=0xFF<<i; P3=0xFF<<i;
+ 128   2              Delay_ms(80);
+ 129   2          }
+ 130   1          for(i=5; i>0; i--) {
+ 131   2              P0=0xFF<<i; P1=0xFF<<i; P2=0xFF<<i; P3=0xFF<<i;
+ 132   2              Delay_ms(80);
+ 133   2          }
+ 134   1      }
+ 135          
+ 136          // 新增效果2：随机闪烁（随机位置LED闪烁）
+ 137          void random_flash(void) {
+ 138   1          uchar i;
+ 139   1          for(i=0; i<8; i++) {
+ 140   2              P0 = ~(0x01 << (i%8)); 
+ 141   2              P1 = ~(0x01 << ((i+2)%8));
+ 142   2              P2 = ~(0x01 << ((i+4)%8));
+ 143   2              P3 = ~(0x01 << ((i+6)%8));
+ 144   2              Delay_ms(80);
+ 145   2          }
+ 146   1      }
+ 147          
+ 148          // 新增效果3：交叉闪烁（左右交替）
+ 149          void cross_flash(void) {
+ 150   1          uchar i;
+ 151   1          for(i=0; i<3; i++) {
+ 152   2              P0=0xAA; P1=0xAA; P2=0x55; P3=0x55;  // 左半亮右半灭
+ 153   2              Delay_ms(200);
+ 154   2              P0=0x55; P1=0x55; P2=0xAA; P3=0xAA;  // 右半亮左半灭
+ 155   2              Delay_ms(200);
+ 156   2          }
+ 157   1          P0=0xFF; P1=0xFF; P2=0xFF; P3=0xFF;
+ 158   1      }
+ 159          
+ 160          // 新增效果4：心跳效果（快速闪烁三次）
+ 161          void heartbeat(void) {
+ 162   1          uchar i;
+ 163   1          for(i=0; i<3; i++) {
+ 164   2              P0=0x00; P1=0x00; P2=0x00; P3=0x00;
+ 165   2              Delay_ms(100);
+ 166   2              P0=0xFF; P1=0xFF; P2=0xFF; P3=0xFF;
+ 167   2              Delay_ms(100);
+ 168   2          }
+ 169   1      }
+ 170          
+ 171          // 新增效果5：波浪效果（从中心向四周扩散）
+ 172          void wave_effect(void) {
+ 173   1          uchar i;
+ 174   1          for(i=0; i<4; i++){
+C51 COMPILER V9.60.7.0   MAIN                                                              03/11/2025 21:21:25 PAGE 4   
+
+ 175   2              P0 = ~(0x18 >> i);  // 00011000 右移
+ 176   2              P1 = ~(0x18 >> i);
+ 177   2              P2 = ~(0x18 << i);  // 00011000 左移
+ 178   2              P3 = ~(0x18 << i);
+ 179   2              Delay_ms(120);
+ 180   2          }
+ 181   1          P0=0xFF;P1=0xFF;P2=0xFF;P3=0xFF;
+ 182   1      }
+ 183          
+ 184          // 新增效果6：跑马灯效果（四端口循环追逐）
+ 185          void marquee(void) {
+ 186   1          uchar i;
+ 187   1          for(i=0; i<8; i++){
+ 188   2              P0 = ~(0x80 >> i); 
+ 189   2              P1 = ~(0x80 >> (i+2)%8);
+ 190   2              P2 = ~(0x80 >> (i+4)%8);
+ 191   2              P3 = ~(0x80 >> (i+6)%8);
+ 192   2              Delay_ms(150);
+ 193   2          }
+ 194   1      }
+ 195          
+ 196          // 新增效果7：渐变闪烁（不同频率闪烁）
+ 197          void gradient_blink(void) {
+ 198   1          uchar i;
+ 199   1          for(i=0; i<6; i++){
+ 200   2              P0=0x00;P1=0xFF;P2=0x00;P3=0xFF;
+ 201   2              Delay_ms(100 + i*20);
+ 202   2              P0=0xFF;P1=0x00;P2=0xFF;P3=0x00;
+ 203   2              Delay_ms(100 + i*20);
+ 204   2          }
+ 205   1      }
+ 206          
+ 207          // 新增效果8：螺旋效果（内外交替旋转）
+ 208          void spiral(void) {
+ 209   1          uchar patterns[] = {0x7E,0xBD,0xDB,0xE7};
+ 210   1          uchar i;
+ 211   1          for(i=0; i<4; i++){
+ 212   2              P0 = patterns[i];
+ 213   2              P1 = patterns[(i+1)%4];
+ 214   2              P2 = patterns[(i+2)%4];
+ 215   2              P3 = patterns[(i+3)%4];
+ 216   2              Delay_ms(200);
+ 217   2          }
+ 218   1          P0=0xFF;P1=0xFF;P2=0xFF;P3=0xFF;
+ 219   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1336    ----
+   CONSTANT SIZE    =      4    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
