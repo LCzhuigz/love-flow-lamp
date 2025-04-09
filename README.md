@@ -1,6 +1,6 @@
 # 爱心流水灯
 
-##介绍
+介绍
 本项目是基于STC 51单片机（STC89C52RC）的爱心流水灯，具有多种显示效果
 
 [B站视频--功能演示及介绍](https://www.bilibili.com/video/BV14DdNYzEGN/?share_source=copy_web&vd_source=6d79e808b79a669fce19cad4952ed2be)
