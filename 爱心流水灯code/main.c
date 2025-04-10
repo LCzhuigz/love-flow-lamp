@@ -7,10 +7,10 @@ typedef unsigned int uint;
 
 void Delay_ms(unsigned int xms);
 
-void clock_wise(void);
-void anticlock_wise(void);
+void clock_wise(uint x);
+void anticlock_wise(uint x);
 void all_dance(void);
-void two_flanks(void);
+void two_flanks(uint x);
 void breath_effect(void);
 void cross_flash(void);
 void random_flash(void);
@@ -24,12 +24,23 @@ void main()
 {
     while(1)
     {   
+		uint i;
         Delay_ms(1000);
-        clock_wise();
+        for (i = 250; i > 0; i -= 50)
+        {
+            clock_wise(i);
+        }
+ 
+				for (i = 250; i > 0; i -= 50)
+        {
+            anticlock_wise(i);
+        }
+				Delay_ms(60);
+				clock_wise(20);
+				Delay_ms(60);
+				anticlock_wise(20);
         Delay_ms(60);
-        anticlock_wise();
-        Delay_ms(60);
-        two_flanks();
+        two_flanks(10);
         Delay_ms(60);
         all_dance();
         Delay_ms(60);
@@ -68,61 +79,60 @@ void Delay_ms(uint xms)
 //全体led闪烁
 void all_dance(void){
 		P0=0x00;P1=0x00;P2=0x00;P3=0x00;
-		Delay_ms(500);
+		Delay_ms(600);
 		P0=0xff;P1=0xff;P2=0xff;P3=0xff;
-		Delay_ms(500);
+		Delay_ms(600);
 }
 //顺时针流水灯
-void clock_wise(void){
-		P1=0x7F;Delay_ms(50);P1=0xBF;Delay_ms(50);P1=0xDF;Delay_ms(50);P1=0xEF;Delay_ms(50);
-		P1=0xF7;Delay_ms(50);P1=0xFB;Delay_ms(50);P1=0xFD;Delay_ms(50);P1=0xFE;Delay_ms(50);
-		P1=0xFF;Delay_ms(50);
-		
-		P0=0xFD;Delay_ms(50);P0=0xFE;Delay_ms(50);P0=0xFB;Delay_ms(50);P0=0xF7;Delay_ms(50);
-		P0=0xEF;Delay_ms(50);P0=0xDF;Delay_ms(50);P0=0xBF;Delay_ms(50);P0=0x7F;Delay_ms(50);
-		P0=0xFF;Delay_ms(50);
-		
-		P2=0x7f;Delay_ms(50);P2=0xBF;Delay_ms(50);P2=0xDF;Delay_ms(50);P2=0xEF;Delay_ms(50);
-		P2=0xF7;Delay_ms(50);P2=0xFB;Delay_ms(50);P2=0xFE;Delay_ms(50);P2=0xFD;Delay_ms(50);
-		P2=0xFF;Delay_ms(50);
-		
-		P3=0x7f;Delay_ms(50);P3=0xBF;Delay_ms(50);P3=0xDF;Delay_ms(50);P3=0xEF;Delay_ms(50);
-		P3=0xF7;Delay_ms(50);P3=0xFB;Delay_ms(50);P3=0xFD;Delay_ms(50);P3=0xFE;Delay_ms(50);
-		P3=0xFF;Delay_ms(50);
+void clock_wise(uint x){
+    P1=0x7F;Delay_ms(x);P1=0xBF;Delay_ms(x);P1=0xDF;Delay_ms(x);P1=0xEF;Delay_ms(x);
+    P1=0xF7;Delay_ms(x);P1=0xFB;Delay_ms(x);P1=0xFD;Delay_ms(x);P1=0xFE;Delay_ms(x);
+    P1=0xFF;Delay_ms(x);
+    
+    P0=0xFE;Delay_ms(x);P0=0xFD;Delay_ms(x);P0=0xFB;Delay_ms(x);P0=0xF7;Delay_ms(x);
+    P0=0xEF;Delay_ms(x);P0=0xDF;Delay_ms(x);P0=0xBF;Delay_ms(x);P0=0x7F;Delay_ms(x);
+    P0=0xFF;Delay_ms(x);
+    
+    P2=0x7F;Delay_ms(x);P2=0xBF;Delay_ms(x);P2=0xDF;Delay_ms(x);P2=0xEF;Delay_ms(x);
+    P2=0xF7;Delay_ms(x);P2=0xFB;Delay_ms(x);P2=0xFD;Delay_ms(x);P2=0xFE;Delay_ms(x);
+    P2=0xFF;Delay_ms(x);
+    
+    P3=0x7f;Delay_ms(x);P3=0xBF;Delay_ms(x);P3=0xDF;Delay_ms(x);P3=0xEF;Delay_ms(x);
+    P3=0xF7;Delay_ms(x);P3=0xFB;Delay_ms(x);P3=0xFD;Delay_ms(x);P3=0xFE;Delay_ms(x);
+    P3=0xFF;Delay_ms(x);
 }
 //逆时针流水灯
-void anticlock_wise(void){
-		P3=0xFE;Delay_ms(50);P3=0xFD;Delay_ms(50);P3=0xFB;Delay_ms(50);P3=0xF7;Delay_ms(50);
-		P3=0xEF;Delay_ms(50);P3=0xDF;Delay_ms(50);P3=0xBF;Delay_ms(50);P3=0x7F;Delay_ms(50);
-		P3=0xFF;Delay_ms(50);
-		
-		P2=0xFD;Delay_ms(50);P2=0xFE;Delay_ms(50);P2=0xFB;Delay_ms(50);P2=0xF7;Delay_ms(50);
-		P2=0xEF;Delay_ms(50);P2=0xDF;Delay_ms(50);P2=0xBF;Delay_ms(50);P2=0x7f;Delay_ms(50);
-		P2=0xFF;Delay_ms(50);
-		
-		P0=0x7F;Delay_ms(50);P0=0xBF;Delay_ms(50);P0=0xDF;Delay_ms(50);P0=0xEF;Delay_ms(50);
-		P0=0xF7;Delay_ms(50);P0=0xFB;Delay_ms(50);P0=0xFE;Delay_ms(50);P0=0xFD;Delay_ms(50);
-		P0=0xFF;Delay_ms(50);
-		
-		P1=0xFE;Delay_ms(50);P1=0xFD;Delay_ms(50);P1=0xFB;Delay_ms(50);P1=0xF7;Delay_ms(50);
-		P1=0xEF;Delay_ms(50);P1=0xDF;Delay_ms(50);P1=0xBF;Delay_ms(50);P1=0x7F;Delay_ms(50);
-		P1=0xFF;Delay_ms(50);
+void anticlock_wise(uint x){
+    P3=0xFE;Delay_ms(x);P3=0xFD;Delay_ms(x);P3=0xFB;Delay_ms(x);P3=0xF7;Delay_ms(x);
+    P3=0xEF;Delay_ms(x);P3=0xDF;Delay_ms(x);P3=0xBF;Delay_ms(x);P3=0x7F;Delay_ms(x);
+    P3=0xFF;Delay_ms(x);
+    
+    P2=0xFE;Delay_ms(x);P2=0xFD;Delay_ms(x);P2=0xFB;Delay_ms(x);P2=0xF7;Delay_ms(x);
+    P2=0xEF;Delay_ms(x);P2=0xDF;Delay_ms(x);P2=0xBF;Delay_ms(x);P2=0x7F;Delay_ms(x);
+    P2=0xFF;Delay_ms(x);
+    
+    P0=0x7F;Delay_ms(x);P0=0xBF;Delay_ms(x);P0=0xDF;Delay_ms(x);P0=0xEF;Delay_ms(x);
+    P0=0xF7;Delay_ms(x);P0=0xFB;Delay_ms(x);P0=0xFD;Delay_ms(x);P0=0xFE;Delay_ms(x);
+    P0=0xFF;Delay_ms(x);
+    
+    P1=0xFE;Delay_ms(x);P1=0xFD;Delay_ms(x);P1=0xFB;Delay_ms(x);P1=0xF7;Delay_ms(x);
+    P1=0xEF;Delay_ms(x);P1=0xDF;Delay_ms(x);P1=0xBF;Delay_ms(x);P1=0x7F;Delay_ms(x);
+    P1=0xFF;Delay_ms(x);
 }
 //两侧同时流水
-void two_flanks(void){
-		P1=0x7F;P3=0xFE;Delay_ms(50);P1=0xBF;P3=0xFD;Delay_ms(50);P1=0xDF;P3=0xFB;Delay_ms(50);P1=0xEF;P3=0xF7;Delay_ms(50);
-		P1=0xF7;P3=0xEF;Delay_ms(50);P1=0xFB;P3=0xDF;Delay_ms(50);P1=0xFD;P3=0xBF;Delay_ms(50);P1=0xFE;P3=0x7F;Delay_ms(50);
-		P1=0xFF;P3=0xFF;Delay_ms(50);
+void two_flanks(uint x){
+		P1=0x7F;P3=0xFE;Delay_ms(x);P1=0xBF;P3=0xFD;Delay_ms(x);P1=0xDF;P3=0xFB;Delay_ms(x);P1=0xEF;P3=0xF7;Delay_ms(x);
+		P1=0xF7;P3=0xEF;Delay_ms(x);P1=0xFB;P3=0xDF;Delay_ms(x);P1=0xFD;P3=0xBF;Delay_ms(x);P1=0xFE;P3=0x7F;Delay_ms(x);
+		P1=0xFF;P3=0xFF;Delay_ms(x);
 
-		P0=0xFD;P2=0xFD;Delay_ms(50);P0=0xFE;P2=0xFE;Delay_ms(50);P0=0xFB;P2=0xFB;Delay_ms(50);P0=0xF7;P2=0xF7;Delay_ms(50);
-		P0=0xEF;P2=0xEF;Delay_ms(50);P0=0xDF;P2=0xDF;Delay_ms(50);P0=0xBF;P2=0xBF;Delay_ms(50);P0=0x7F;P2=0x7F;Delay_ms(50);
-		P0=0xFF;P2=0xFF;Delay_ms(50);
+		P0=0xFD;P2=0xFD;Delay_ms(x);P0=0xFE;P2=0xFE;Delay_ms(x);P0=0xFB;P2=0xFB;Delay_ms(x);P0=0xF7;P2=0xF7;Delay_ms(x);
+		P0=0xEF;P2=0xEF;Delay_ms(x);P0=0xDF;P2=0xDF;Delay_ms(x);P0=0xBF;P2=0xBF;Delay_ms(x);P0=0x7F;P2=0x7F;Delay_ms(x);
+		P0=0xFF;P2=0xFF;Delay_ms(x);
 }
 
 // 新增效果1：呼吸灯效果（所有LED渐变亮度）
 void breath_effect(void) {
-		uchar i;
-	
+	uchar i;
     for(i=0; i<5; i++) {
         P0=0xFF<<i; P1=0xFF<<i; P2=0xFF<<i; P3=0xFF<<i;
         Delay_ms(80);
@@ -135,7 +145,7 @@ void breath_effect(void) {
 
 // 新增效果2：随机闪烁（随机位置LED闪烁）
 void random_flash(void) {
-		uchar i;
+	uchar i;
     for(i=0; i<8; i++) {
         P0 = ~(0x01 << (i%8)); 
         P1 = ~(0x01 << ((i+2)%8));
@@ -147,7 +157,7 @@ void random_flash(void) {
 
 // 新增效果3：交叉闪烁（左右交替）
 void cross_flash(void) {
-		uchar i;
+	uchar i;
     for(i=0; i<3; i++) {
         P0=0xAA; P1=0xAA; P2=0x55; P3=0x55;  // 左半亮右半灭
         Delay_ms(200);
@@ -159,7 +169,7 @@ void cross_flash(void) {
 
 // 新增效果4：心跳效果（快速闪烁三次）
 void heartbeat(void) {
-		uchar i;
+	uchar i;
     for(i=0; i<3; i++) {
         P0=0x00; P1=0x00; P2=0x00; P3=0x00;
         Delay_ms(100);
@@ -207,7 +217,7 @@ void gradient_blink(void) {
 // 新增效果8：螺旋效果（内外交替旋转）
 void spiral(void) {
     uchar patterns[] = {0x7E,0xBD,0xDB,0xE7};
-		uchar i;
+	uchar i;
     for(i=0; i<4; i++){
         P0 = patterns[i];
         P1 = patterns[(i+1)%4];
