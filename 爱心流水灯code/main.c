@@ -82,6 +82,7 @@ void Delay_ms(uint xms)
 		xms--;
 	}
 }
+
 //全体led闪烁
 void all_dance(void){
 		P0=0x00;P1=0x00;P2=0x00;P3=0x00;
