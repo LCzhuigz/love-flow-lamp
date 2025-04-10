@@ -1,9 +1,7 @@
 #include <REGX52.H>
 
-
 typedef unsigned char uchar;
 typedef unsigned int uint;
-
 
 void Delay_ms(unsigned int xms);
 
@@ -19,6 +17,9 @@ void wave_effect(void);
 void marquee(void);
 void gradient_blink(void);
 void spiral(void);
+void rainbow_effect(void);
+void flash_center(void);
+
 
 void main()
 {
@@ -58,6 +59,11 @@ void main()
         gradient_blink();   // 新增渐变闪烁
         Delay_ms(60);
         spiral();           // 新增螺旋闪烁
+        Delay_ms(60);
+        rainbow_effect();   // 新增彩虹渐变效果
+        Delay_ms(60);
+        flash_center(); 
+        
     }
 }
 
@@ -130,7 +136,7 @@ void two_flanks(uint x){
 	P0=0xFF;P2=0xFF;Delay_ms(x);
 }
 
-// 新增效果1：呼吸灯效果（所有LED渐变亮度）
+//呼吸灯效果（所有LED渐变亮度）
 void breath_effect(void) {
 	uchar i;
     for(i=0; i<5; i++) {
@@ -143,7 +149,7 @@ void breath_effect(void) {
     }
 }
 
-// 新增效果2：随机闪烁（随机位置LED闪烁）
+//随机闪烁（随机位置LED闪烁）
 void random_flash(void) {
 	uchar i;
     for(i=0; i<8; i++) {
@@ -155,10 +161,10 @@ void random_flash(void) {
     }
 }
 
-// 新增效果3：交叉闪烁（左右交替）
+//交叉闪烁（左右交替）
 void cross_flash(void) {
 	uchar i;
-    for(i=0; i<3; i++) {
+    for(i=0; i<4; i++) {
         P0=0xAA; P1=0xAA; P2=0x55; P3=0x55;  // 左半亮右半灭
         Delay_ms(200);
         P0=0x55; P1=0x55; P2=0xAA; P3=0xAA;  // 右半亮左半灭
@@ -167,18 +173,18 @@ void cross_flash(void) {
     P0=0xFF; P1=0xFF; P2=0xFF; P3=0xFF;
 }
 
-// 新增效果4：心跳效果（快速闪烁三次）
+//心跳效果（快速闪烁三次）
 void heartbeat(void) {
 	uchar i;
     for(i=0; i<3; i++) {
         P0=0x00; P1=0x00; P2=0x00; P3=0x00;
-        Delay_ms(100);
+        Delay_ms(200);
         P0=0xFF; P1=0xFF; P2=0xFF; P3=0xFF;
-        Delay_ms(100);
+        Delay_ms(200);
     }
 }
 
-// 新增效果5：波浪效果（从中心向四周扩散）
+//波浪效果（从中心向四周扩散）
 void wave_effect(void) {
     uchar i;
     for(i=0; i<4; i++){
@@ -191,7 +197,7 @@ void wave_effect(void) {
     P0=0xFF;P1=0xFF;P2=0xFF;P3=0xFF;
 }
 
-// 新增效果6：跑马灯效果（四端口循环追逐）
+//跑马灯效果（四端口循环追逐）
 void marquee(void) {
     uchar i;
     for(i=0; i<8; i++){
@@ -203,7 +209,7 @@ void marquee(void) {
     }
 }
 
-// 新增效果7：渐变闪烁（不同频率闪烁）
+//渐变闪烁（不同频率闪烁）
 void gradient_blink(void) {
     uchar i;
     for(i=0; i<6; i++){
@@ -214,7 +220,7 @@ void gradient_blink(void) {
     }
 }
 
-// 新增效果8：螺旋效果（内外交替旋转）
+//螺旋效果（内外交替旋转）
 void spiral(void) {
     uchar patterns[] = {0x7E,0xBD,0xDB,0xE7};
 	uchar i;
@@ -223,6 +229,36 @@ void spiral(void) {
         P1 = patterns[(i+1)%4];
         P2 = patterns[(i+2)%4];
         P3 = patterns[(i+3)%4];
+        Delay_ms(200);
+    }
+    P0=0xFF;P1=0xFF;P2=0xFF;P3=0xFF;
+}
+
+//彩虹渐变效果（简单的颜色变化）
+void rainbow_effect(void) {
+    uchar patterns[] = {0xFF, 0x0C, 0xF3, 0x7E, 0x9F, 0x3F};
+    uchar i;
+    for(i=0; i<6; i++){
+        P0 = patterns[i];
+        P1 = patterns[(i+1)%6];
+        P2 = patterns[(i+2)%6];
+        P3 = patterns[(i+3)%6];
+        Delay_ms(150);
+    }
+    P0=0xFF;P1=0xFF;P2=0xFF;P3=0xFF;
+}
+
+//闪烁中心点效果（四个端口的中间LED依次闪烁）
+void flash_center(void) {
+    uchar i;
+    for(i=0; i<3; i++){
+        P0=0x80; P1=0x00; P2=0x00; P3=0x00;
+        Delay_ms(200);
+        P0=0x00; P1=0x80; P2=0x00; P3=0x00;
+        Delay_ms(200);
+        P0=0x00; P1=0x00; P2=0x80; P3=0x00;
+        Delay_ms(200);
+        P0=0x00; P1=0x00; P2=0x00; P3=0x80;
         Delay_ms(200);
     }
     P0=0xFF;P1=0xFF;P2=0xFF;P3=0xFF;

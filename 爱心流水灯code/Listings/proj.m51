@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    04/10/2025  10:05:34  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    04/10/2025  10:39:12  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
@@ -12,6 +12,7 @@ INPUT MODULES INCLUDED:
   .\Objects\main.obj (MAIN)
   D:\SOFTWARE\KEIL\CORE\C51\LIB\C51S.LIB (?C_STARTUP)
   D:\SOFTWARE\KEIL\CORE\C51\LIB\C51S.LIB (?C?COPY)
+  D:\SOFTWARE\KEIL\CORE\C51\LIB\C51S.LIB (?C?UIDIV)
 
 
 LINK MAP OF MODULE:  .\Objects\proj (MAIN)
@@ -22,29 +23,31 @@ LINK MAP OF MODULE:  .\Objects\proj (MAIN)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     0006H     UNIT         _DATA_GROUP_
-            IDATA   000EH     0001H     UNIT         ?STACK
+            DATA    0008H     0008H     UNIT         _DATA_GROUP_
+            IDATA   0010H     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
                     0003H     07FDH                  *** GAP ***
-            CODE    0800H     00F6H     UNIT         ?C?LIB_CODE
-            CODE    08F6H     00DAH     UNIT         ?PR?_CLOCK_WISE?MAIN
-            CODE    09D0H     00DAH     UNIT         ?PR?_ANTICLOCK_WISE?MAIN
-            CODE    0AAAH     00D3H     UNIT         ?PR?MAIN?MAIN
-            CODE    0B7DH     00A7H     UNIT         ?PR?_TWO_FLANKS?MAIN
-            CODE    0C24H     0059H     UNIT         ?PR?BREATH_EFFECT?MAIN
-            CODE    0C7DH     0058H     UNIT         ?PR?RANDOM_FLASH?MAIN
-            CODE    0CD5H     0055H     UNIT         ?PR?MARQUEE?MAIN
-            CODE    0D2AH     0054H     UNIT         ?PR?SPIRAL?MAIN
-            CODE    0D7EH     003BH     UNIT         ?PR?GRADIENT_BLINK?MAIN
-            CODE    0DB9H     003AH     UNIT         ?PR?WAVE_EFFECT?MAIN
-            CODE    0DF3H     0039H     UNIT         ?PR?CROSS_FLASH?MAIN
-            CODE    0E2CH     0029H     UNIT         ?PR?HEARTBEAT?MAIN
-            CODE    0E55H     0023H     UNIT         ?PR?ALL_DANCE?MAIN
-            CODE    0E78H     0022H     UNIT         ?PR?_DELAY_MS?MAIN
-            CODE    0E9AH     000CH     UNIT         ?C_C51STARTUP
-            CODE    0EA6H     0004H     UNIT         ?CO?MAIN
+            CODE    0800H     014BH     UNIT         ?C?LIB_CODE
+            CODE    094BH     00E7H     UNIT         ?PR?MAIN?MAIN
+            CODE    0A32H     00DAH     UNIT         ?PR?_CLOCK_WISE?MAIN
+            CODE    0B0CH     00DAH     UNIT         ?PR?_ANTICLOCK_WISE?MAIN
+            CODE    0BE6H     00A7H     UNIT         ?PR?_TWO_FLANKS?MAIN
+            CODE    0C8DH     0073H     UNIT         ?PR?RAINBOW_EFFECT?MAIN
+            CODE    0D00H     0059H     UNIT         ?PR?BREATH_EFFECT?MAIN
+            CODE    0D59H     0058H     UNIT         ?PR?RANDOM_FLASH?MAIN
+            CODE    0DB1H     0055H     UNIT         ?PR?MARQUEE?MAIN
+            CODE    0E06H     0054H     UNIT         ?PR?SPIRAL?MAIN
+            CODE    0E5AH     0053H     UNIT         ?PR?FLASH_CENTER?MAIN
+            CODE    0EADH     003BH     UNIT         ?PR?GRADIENT_BLINK?MAIN
+            CODE    0EE8H     003AH     UNIT         ?PR?WAVE_EFFECT?MAIN
+            CODE    0F22H     0039H     UNIT         ?PR?CROSS_FLASH?MAIN
+            CODE    0F5BH     0029H     UNIT         ?PR?HEARTBEAT?MAIN
+            CODE    0F84H     0023H     UNIT         ?PR?ALL_DANCE?MAIN
+            CODE    0FA7H     0022H     UNIT         ?PR?_DELAY_MS?MAIN
+            CODE    0FC9H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0FD5H     000AH     UNIT         ?CO?MAIN
 
 
 
@@ -56,12 +59,12 @@ SEGMENT                            DATA_GROUP
 ------------------------------------------------
 ?C_C51STARTUP                    -----    -----
   +--> ?PR?MAIN?MAIN
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/10/2025  10:39:12  PAGE 2
+
+
 
 ?PR?MAIN?MAIN                    0008H    0002H
   +--> ?PR?_DELAY_MS?MAIN
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/10/2025  10:05:34  PAGE 2
-
-
   +--> ?PR?_CLOCK_WISE?MAIN
   +--> ?PR?_ANTICLOCK_WISE?MAIN
   +--> ?PR?_TWO_FLANKS?MAIN
@@ -74,6 +77,8 @@ SEGMENT                            DATA_GROUP
   +--> ?PR?MARQUEE?MAIN
   +--> ?PR?GRADIENT_BLINK?MAIN
   +--> ?PR?SPIRAL?MAIN
+  +--> ?PR?RAINBOW_EFFECT?MAIN
+  +--> ?PR?FLASH_CENTER?MAIN
 
 ?PR?_CLOCK_WISE?MAIN             -----    -----
   +--> ?PR?_DELAY_MS?MAIN
@@ -112,6 +117,16 @@ SEGMENT                            DATA_GROUP
   +--> ?CO?MAIN
   +--> ?PR?_DELAY_MS?MAIN
 
+?PR?RAINBOW_EFFECT?MAIN          000AH    0006H
+  +--> ?CO?MAIN
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/10/2025  10:39:12  PAGE 3
+
+
+  +--> ?PR?_DELAY_MS?MAIN
+
+?PR?FLASH_CENTER?MAIN            -----    -----
+  +--> ?PR?_DELAY_MS?MAIN
+
 
 
 SYMBOL TABLE OF MODULE:  .\Objects\proj (MAIN)
@@ -119,282 +134,328 @@ SYMBOL TABLE OF MODULE:  .\Objects\proj (MAIN)
   VALUE           TYPE          NAME
   ----------------------------------
 
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/10/2025  10:05:34  PAGE 3
-
-
   -------         MODULE        MAIN
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
-  C:0DB9H         PUBLIC        wave_effect
-  C:0D2AH         PUBLIC        spiral
-  C:0E55H         PUBLIC        all_dance
-  C:0DF3H         PUBLIC        cross_flash
-  C:0AAAH         PUBLIC        main
-  C:08F6H         PUBLIC        _clock_wise
-  C:0E86H         PUBLIC        _Delay_ms
-  C:0E2CH         PUBLIC        heartbeat
-  C:0B7DH         PUBLIC        _two_flanks
-  C:0EA6H         SYMBOL        _?ix1000
-  C:0D7EH         PUBLIC        gradient_blink
-  C:0C24H         PUBLIC        breath_effect
-  C:09D0H         PUBLIC        _anticlock_wise
-  C:0CD5H         PUBLIC        marquee
-  C:0C7DH         PUBLIC        random_flash
+  C:0EE8H         PUBLIC        wave_effect
+  C:0E06H         PUBLIC        spiral
+  C:0F84H         PUBLIC        all_dance
+  C:0F22H         PUBLIC        cross_flash
+  C:094BH         PUBLIC        main
+  C:0A32H         PUBLIC        _clock_wise
+  C:0FB5H         PUBLIC        _Delay_ms
+  C:0F5BH         PUBLIC        heartbeat
+  C:0BE6H         PUBLIC        _two_flanks
+  C:0FD5H         SYMBOL        _?ix1000
+  C:0FD9H         SYMBOL        _?ix1001
+  C:0EADH         PUBLIC        gradient_blink
+  C:0C8DH         PUBLIC        rainbow_effect
+  C:0D00H         PUBLIC        breath_effect
+  C:0B0CH         PUBLIC        _anticlock_wise
+  C:0DB1H         PUBLIC        marquee
+  C:0E5AH         PUBLIC        flash_center
+  C:0D59H         PUBLIC        random_flash
   -------         PROC          MAIN
   -------         DO            
   D:0008H         SYMBOL        i
   -------         ENDDO         
-  C:0AAAH         LINE#         23
-  C:0AAAH         LINE#         24
-  C:0AAAH         LINE#         25
-  C:0AAAH         LINE#         26
-  C:0AAAH         LINE#         28
-  C:0AB1H         LINE#         29
-  C:0AC2H         LINE#         30
-  C:0AC2H         LINE#         31
-  C:0AC9H         LINE#         32
-  C:0AD7H         LINE#         34
-  C:0AE8H         LINE#         35
-  C:0AE8H         LINE#         36
-  C:0AEFH         LINE#         37
-  C:0AFDH         LINE#         38
-  C:0B04H         LINE#         39
-  C:0B0BH         LINE#         40
-  C:0B12H         LINE#         41
-  C:0B19H         LINE#         42
-  C:0B20H         LINE#         43
-  C:0B27H         LINE#         44
-  C:0B2EH         LINE#         45
-  C:0B31H         LINE#         46
-  C:0B38H         LINE#         47
-  C:0B3BH         LINE#         48
-  C:0B42H         LINE#         49
-  C:0B45H         LINE#         50
-  C:0B4CH         LINE#         51
-  C:0B4FH         LINE#         52
-  C:0B56H         LINE#         53
-  C:0B59H         LINE#         54
-  C:0B5CH         LINE#         55
-  C:0B63H         LINE#         56
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/10/2025  10:05:34  PAGE 4
+  C:094BH         LINE#         26
+  C:094BH         LINE#         27
+  C:094BH         LINE#         28
+  C:094BH         LINE#         29
+  C:094BH         LINE#         31
+  C:0952H         LINE#         32
+  C:0963H         LINE#         33
+  C:0963H         LINE#         34
+  C:096AH         LINE#         35
+  C:0978H         LINE#         37
+  C:0989H         LINE#         38
+  C:0989H         LINE#         39
+  C:0990H         LINE#         40
+  C:099EH         LINE#         41
+  C:09A5H         LINE#         42
+  C:09ACH         LINE#         43
+  C:09B3H         LINE#         44
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/10/2025  10:39:12  PAGE 4
 
 
-  C:0B66H         LINE#         57
-  C:0B6DH         LINE#         58
-  C:0B70H         LINE#         59
-  C:0B77H         LINE#         60
-  C:0B7AH         LINE#         61
+  C:09BAH         LINE#         45
+  C:09C1H         LINE#         46
+  C:09C8H         LINE#         47
+  C:09CFH         LINE#         48
+  C:09D2H         LINE#         49
+  C:09D9H         LINE#         50
+  C:09DCH         LINE#         51
+  C:09E3H         LINE#         52
+  C:09E6H         LINE#         53
+  C:09EDH         LINE#         54
+  C:09F0H         LINE#         55
+  C:09F7H         LINE#         56
+  C:09FAH         LINE#         57
+  C:09FDH         LINE#         58
+  C:0A04H         LINE#         59
+  C:0A07H         LINE#         60
+  C:0A0EH         LINE#         61
+  C:0A11H         LINE#         62
+  C:0A18H         LINE#         63
+  C:0A1BH         LINE#         64
+  C:0A22H         LINE#         65
+  C:0A25H         LINE#         66
+  C:0A2CH         LINE#         67
+  C:0A2FH         LINE#         69
   -------         ENDPROC       MAIN
-  C:0E7FH         SYMBOL        L?0087
-  C:0E82H         SYMBOL        L?0088
-  -------         PROC          L?0086
-  -------         ENDPROC       L?0086
-  C:0E7FH         SYMBOL        L?0087
-  C:0E82H         SYMBOL        L?0088
+  C:0FAEH         SYMBOL        L?0095
+  C:0FB1H         SYMBOL        L?0096
+  -------         PROC          L?0094
+  -------         ENDPROC       L?0094
+  C:0FAEH         SYMBOL        L?0095
+  C:0FB1H         SYMBOL        L?0096
   -------         PROC          _DELAY_MS
   D:0006H         SYMBOL        xms
   -------         DO            
   D:0005H         SYMBOL        i
   D:0004H         SYMBOL        j
   -------         ENDDO         
-  C:0E86H         LINE#         65
-  C:0E86H         LINE#         66
-  C:0E86H         LINE#         68
-  C:0E8AH         LINE#         69
-  C:0E8AH         LINE#         70
-  C:0E8CH         LINE#         71
-  C:0E8EH         LINE#         73
-  C:0E8EH         LINE#         74
-  C:0E90H         LINE#         75
-  C:0E92H         LINE#         76
-  C:0E97H         LINE#         77
-  C:0E99H         LINE#         78
+  C:0FB5H         LINE#         73
+  C:0FB5H         LINE#         74
+  C:0FB5H         LINE#         76
+  C:0FB9H         LINE#         77
+  C:0FB9H         LINE#         78
+  C:0FBBH         LINE#         79
+  C:0FBDH         LINE#         81
+  C:0FBDH         LINE#         82
+  C:0FBFH         LINE#         83
+  C:0FC1H         LINE#         84
+  C:0FC6H         LINE#         85
+  C:0FC8H         LINE#         86
   -------         ENDPROC       _DELAY_MS
   -------         PROC          ALL_DANCE
-  C:0E55H         LINE#         80
-  C:0E55H         LINE#         81
-  C:0E5EH         LINE#         82
-  C:0E65H         LINE#         83
-  C:0E71H         LINE#         84
+  C:0F84H         LINE#         88
+  C:0F84H         LINE#         89
+  C:0F8DH         LINE#         90
+  C:0F94H         LINE#         91
+  C:0FA0H         LINE#         92
   -------         ENDPROC       ALL_DANCE
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/10/2025  10:39:12  PAGE 5
+
+
   -------         PROC          _CLOCK_WISE
   D:0002H         SYMBOL        x
-  C:08F6H         LINE#         87
-  C:08FAH         LINE#         88
-  C:0912H         LINE#         89
-  C:092AH         LINE#         90
-  C:0930H         LINE#         92
-  C:0948H         LINE#         93
-  C:0960H         LINE#         94
-  C:0963H         LINE#         96
-  C:0978H         LINE#         97
-  C:0990H         LINE#         98
-  C:0996H         LINE#         100
-  C:09AEH         LINE#         101
-  C:09C6H         LINE#         102
+  C:0A32H         LINE#         95
+  C:0A36H         LINE#         96
+  C:0A4EH         LINE#         97
+  C:0A66H         LINE#         98
+  C:0A6CH         LINE#         100
+  C:0A84H         LINE#         101
+  C:0A9CH         LINE#         102
+  C:0A9FH         LINE#         104
+  C:0AB4H         LINE#         105
+  C:0ACCH         LINE#         106
+  C:0AD2H         LINE#         108
+  C:0AEAH         LINE#         109
+  C:0B02H         LINE#         110
   -------         ENDPROC       _CLOCK_WISE
   -------         PROC          _ANTICLOCK_WISE
   D:0002H         SYMBOL        x
-  C:09D0H         LINE#         105
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/10/2025  10:05:34  PAGE 5
-
-
-  C:09D4H         LINE#         106
-  C:09ECH         LINE#         107
-  C:0A04H         LINE#         108
-  C:0A0AH         LINE#         110
-  C:0A22H         LINE#         111
-  C:0A34H         LINE#         112
-  C:0A3AH         LINE#         114
-  C:0A52H         LINE#         115
-  C:0A6AH         LINE#         116
-  C:0A70H         LINE#         118
-  C:0A88H         LINE#         119
-  C:0AA0H         LINE#         120
+  C:0B0CH         LINE#         113
+  C:0B10H         LINE#         114
+  C:0B28H         LINE#         115
+  C:0B40H         LINE#         116
+  C:0B46H         LINE#         118
+  C:0B5EH         LINE#         119
+  C:0B70H         LINE#         120
+  C:0B76H         LINE#         122
+  C:0B8EH         LINE#         123
+  C:0BA6H         LINE#         124
+  C:0BACH         LINE#         126
+  C:0BC4H         LINE#         127
+  C:0BDCH         LINE#         128
   -------         ENDPROC       _ANTICLOCK_WISE
   -------         PROC          _TWO_FLANKS
   D:0002H         SYMBOL        x
-  C:0B7DH         LINE#         123
-  C:0B81H         LINE#         124
-  C:0BA5H         LINE#         125
-  C:0BC9H         LINE#         126
-  C:0BD2H         LINE#         128
-  C:0BF6H         LINE#         129
-  C:0C17H         LINE#         130
+  C:0BE6H         LINE#         131
+  C:0BEAH         LINE#         132
+  C:0C0EH         LINE#         133
+  C:0C32H         LINE#         134
+  C:0C3BH         LINE#         136
+  C:0C5FH         LINE#         137
+  C:0C80H         LINE#         138
   -------         ENDPROC       _TWO_FLANKS
   -------         PROC          BREATH_EFFECT
   -------         DO            
   D:0003H         SYMBOL        i
   -------         ENDDO         
-  C:0C24H         LINE#         134
-  C:0C24H         LINE#         136
-  C:0C26H         LINE#         137
-  C:0C46H         LINE#         138
-  C:0C4DH         LINE#         139
-  C:0C51H         LINE#         140
-  C:0C53H         LINE#         141
-  C:0C73H         LINE#         142
-  C:0C7AH         LINE#         143
-  C:0C7CH         LINE#         144
+  C:0D00H         LINE#         142
+  C:0D00H         LINE#         144
+  C:0D02H         LINE#         145
+  C:0D22H         LINE#         146
+  C:0D29H         LINE#         147
+  C:0D2DH         LINE#         148
+  C:0D2FH         LINE#         149
+  C:0D4FH         LINE#         150
+  C:0D56H         LINE#         151
+  C:0D58H         LINE#         152
   -------         ENDPROC       BREATH_EFFECT
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/10/2025  10:39:12  PAGE 6
+
+
   -------         PROC          RANDOM_FLASH
   -------         DO            
   D:0003H         SYMBOL        i
   -------         ENDDO         
-  C:0C7DH         LINE#         147
-  C:0C7DH         LINE#         149
-  C:0C7FH         LINE#         150
-  C:0C90H         LINE#         151
-  C:0CA3H         LINE#         152
-  C:0CB6H         LINE#         153
-  C:0CC9H         LINE#         154
-  C:0CD0H         LINE#         155
-  C:0CD4H         LINE#         156
+  C:0D59H         LINE#         155
+  C:0D59H         LINE#         157
+  C:0D5BH         LINE#         158
+  C:0D6CH         LINE#         159
+  C:0D7FH         LINE#         160
+  C:0D92H         LINE#         161
+  C:0DA5H         LINE#         162
+  C:0DACH         LINE#         163
+  C:0DB0H         LINE#         164
   -------         ENDPROC       RANDOM_FLASH
   -------         PROC          CROSS_FLASH
   -------         DO            
   D:0003H         SYMBOL        i
   -------         ENDDO         
-  C:0DF3H         LINE#         159
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/10/2025  10:05:34  PAGE 6
-
-
-  C:0DF3H         LINE#         161
-  C:0DF5H         LINE#         162
-  C:0E01H         LINE#         163
-  C:0E08H         LINE#         164
-  C:0E14H         LINE#         165
-  C:0E1BH         LINE#         166
-  C:0E1FH         LINE#         167
-  C:0E2BH         LINE#         168
+  C:0F22H         LINE#         167
+  C:0F22H         LINE#         169
+  C:0F24H         LINE#         170
+  C:0F30H         LINE#         171
+  C:0F37H         LINE#         172
+  C:0F43H         LINE#         173
+  C:0F4AH         LINE#         174
+  C:0F4EH         LINE#         175
+  C:0F5AH         LINE#         176
   -------         ENDPROC       CROSS_FLASH
   -------         PROC          HEARTBEAT
   -------         DO            
   D:0003H         SYMBOL        i
   -------         ENDDO         
-  C:0E2CH         LINE#         171
-  C:0E2CH         LINE#         173
-  C:0E2EH         LINE#         174
-  C:0E37H         LINE#         175
-  C:0E3DH         LINE#         176
-  C:0E49H         LINE#         177
-  C:0E50H         LINE#         178
-  C:0E54H         LINE#         179
+  C:0F5BH         LINE#         179
+  C:0F5BH         LINE#         181
+  C:0F5DH         LINE#         182
+  C:0F66H         LINE#         183
+  C:0F6CH         LINE#         184
+  C:0F78H         LINE#         185
+  C:0F7FH         LINE#         186
+  C:0F83H         LINE#         187
   -------         ENDPROC       HEARTBEAT
   -------         PROC          WAVE_EFFECT
   -------         DO            
   D:0003H         SYMBOL        i
   -------         ENDDO         
-  C:0DB9H         LINE#         182
-  C:0DB9H         LINE#         184
-  C:0DBBH         LINE#         185
-  C:0DC9H         LINE#         186
-  C:0DCBH         LINE#         187
-  C:0DD9H         LINE#         188
-  C:0DDBH         LINE#         189
-  C:0DE2H         LINE#         190
-  C:0DE6H         LINE#         191
-  C:0DF2H         LINE#         192
+  C:0EE8H         LINE#         190
+  C:0EE8H         LINE#         192
+  C:0EEAH         LINE#         193
+  C:0EF8H         LINE#         194
+  C:0EFAH         LINE#         195
+  C:0F08H         LINE#         196
+  C:0F0AH         LINE#         197
+  C:0F11H         LINE#         198
+  C:0F15H         LINE#         199
+  C:0F21H         LINE#         200
   -------         ENDPROC       WAVE_EFFECT
   -------         PROC          MARQUEE
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/10/2025  10:39:12  PAGE 7
+
+
   -------         DO            
   D:0003H         SYMBOL        i
   -------         ENDDO         
-  C:0CD5H         LINE#         195
-  C:0CD5H         LINE#         197
-  C:0CD7H         LINE#         198
-  C:0CE5H         LINE#         199
-  C:0CF8H         LINE#         200
-  C:0D0BH         LINE#         201
-  C:0D1EH         LINE#         202
-  C:0D25H         LINE#         203
-  C:0D29H         LINE#         204
+  C:0DB1H         LINE#         203
+  C:0DB1H         LINE#         205
+  C:0DB3H         LINE#         206
+  C:0DC1H         LINE#         207
+  C:0DD4H         LINE#         208
+  C:0DE7H         LINE#         209
+  C:0DFAH         LINE#         210
+  C:0E01H         LINE#         211
+  C:0E05H         LINE#         212
   -------         ENDPROC       MARQUEE
   -------         PROC          GRADIENT_BLINK
   -------         DO            
   D:0003H         SYMBOL        i
   -------         ENDDO         
-  C:0D7EH         LINE#         207
-  C:0D7EH         LINE#         209
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/10/2025  10:05:34  PAGE 7
-
-
-  C:0D80H         LINE#         210
-  C:0D8BH         LINE#         211
-  C:0D9AH         LINE#         212
-  C:0DA5H         LINE#         213
-  C:0DB4H         LINE#         214
-  C:0DB8H         LINE#         215
+  C:0EADH         LINE#         215
+  C:0EADH         LINE#         217
+  C:0EAFH         LINE#         218
+  C:0EBAH         LINE#         219
+  C:0EC9H         LINE#         220
+  C:0ED4H         LINE#         221
+  C:0EE3H         LINE#         222
+  C:0EE7H         LINE#         223
   -------         ENDPROC       GRADIENT_BLINK
   -------         PROC          SPIRAL
   -------         DO            
   D:000AH         SYMBOL        patterns
   D:0003H         SYMBOL        i
   -------         ENDDO         
-  C:0D2AH         LINE#         218
-  C:0D2AH         LINE#         219
-  C:0D3DH         LINE#         221
-  C:0D3FH         LINE#         222
-  C:0D46H         LINE#         223
-  C:0D50H         LINE#         224
-  C:0D5BH         LINE#         225
-  C:0D66H         LINE#         226
-  C:0D6DH         LINE#         227
-  C:0D71H         LINE#         228
-  C:0D7DH         LINE#         229
+  C:0E06H         LINE#         226
+  C:0E06H         LINE#         227
+  C:0E19H         LINE#         229
+  C:0E1BH         LINE#         230
+  C:0E22H         LINE#         231
+  C:0E2CH         LINE#         232
+  C:0E37H         LINE#         233
+  C:0E42H         LINE#         234
+  C:0E49H         LINE#         235
+  C:0E4DH         LINE#         236
+  C:0E59H         LINE#         237
   -------         ENDPROC       SPIRAL
+  -------         PROC          RAINBOW_EFFECT
+  -------         DO            
+  D:000AH         SYMBOL        patterns
+  D:0003H         SYMBOL        i
+  -------         ENDDO         
+  C:0C8DH         LINE#         240
+  C:0C8DH         LINE#         241
+  C:0CA0H         LINE#         243
+  C:0CA2H         LINE#         244
+  C:0CA9H         LINE#         245
+  C:0CBEH         LINE#         246
+  C:0CD3H         LINE#         247
+  C:0CE8H         LINE#         248
+  C:0CEFH         LINE#         249
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/10/2025  10:39:12  PAGE 8
+
+
+  C:0CF3H         LINE#         250
+  C:0CFFH         LINE#         251
+  -------         ENDPROC       RAINBOW_EFFECT
+  -------         PROC          FLASH_CENTER
+  -------         DO            
+  D:0003H         SYMBOL        i
+  -------         ENDDO         
+  C:0E5AH         LINE#         254
+  C:0E5AH         LINE#         256
+  C:0E5CH         LINE#         257
+  C:0E66H         LINE#         258
+  C:0E6CH         LINE#         259
+  C:0E76H         LINE#         260
+  C:0E7CH         LINE#         261
+  C:0E86H         LINE#         262
+  C:0E8CH         LINE#         263
+  C:0E96H         LINE#         264
+  C:0E9CH         LINE#         265
+  C:0EA0H         LINE#         266
+  C:0EACH         LINE#         267
+  -------         ENDPROC       FLASH_CENTER
   -------         ENDMOD        MAIN
 
   -------         MODULE        ?C?COPY
   C:08D0H         PUBLIC        ?C?COPY
   -------         ENDMOD        ?C?COPY
 
+  -------         MODULE        ?C?UIDIV
+  C:08F6H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 05A8H BYTE (70%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0688H BYTE (81%) *
 ******************************************************************************
 
-Program Size: data=15.0 xdata=0 code=1709
+Program Size: data=17.0 xdata=0 code=2018
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
