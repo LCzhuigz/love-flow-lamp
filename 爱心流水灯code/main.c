@@ -20,38 +20,35 @@ void spiral(void);
 void rainbow_effect(void);
 void flash_center(void);
 
+static uint i;
 
 void main()
 {
     while(1)
     {   
-		uint i;
-        Delay_ms(1000);
-        for (i = 250; i > 0; i -= 50)
+        Delay_ms(500);
+        for (i = 60; i > 0; i -= 10)
         {
             clock_wise(i);
         }
- 
-		for (i = 250; i > 0; i -= 50)
+		for (i = 60; i > 0; i -= 10)
         {
             anticlock_wise(i);
         }
 		Delay_ms(60);
-		clock_wise(20);
+		clock_wise(50);
 		Delay_ms(60);
-		anticlock_wise(20);
+		anticlock_wise(50);
         Delay_ms(60);
-        two_flanks(10);
-        Delay_ms(60);
-        all_dance();
+        two_flanks(50);
         Delay_ms(60);
         breath_effect();    // 新增呼吸效果
 		Delay_ms(60);
-        cross_flash();      // 新增交叉闪烁
+        cross_flash();    // 新增交叉闪烁
 		Delay_ms(60);
         random_flash();     // 新增随机闪烁
 		Delay_ms(60);
-        heartbeat();        // 新增心跳效果
+        heartbeat();     // 新增心跳效果
 		wave_effect();      // 新增波浪效果
         Delay_ms(60);
         marquee();          // 新增跑马灯
@@ -62,8 +59,10 @@ void main()
         Delay_ms(60);
         rainbow_effect();   // 新增彩虹渐变效果
         Delay_ms(60);
-        flash_center(); 
-        
+        flash_center();
+        Delay_ms(60);
+        all_dance();
+        Delay_ms(100);
     }
 }
 
@@ -85,10 +84,10 @@ void Delay_ms(uint xms)
 
 //全体led闪烁
 void all_dance(void){
-		P0=0x00;P1=0x00;P2=0x00;P3=0x00;
-		Delay_ms(600);
-		P0=0xff;P1=0xff;P2=0xff;P3=0xff;
-		Delay_ms(600);
+	P0=0xFF;P1=0xFF;P2=0xFF;P3=0xFF;
+	Delay_ms(600);
+    P0=0x00;P1=0x00;P2=0x00;P3=0x00;
+	Delay_ms(600);
 }
 //顺时针流水灯
 void clock_wise(uint x){
