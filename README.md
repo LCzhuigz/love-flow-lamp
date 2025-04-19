@@ -24,13 +24,13 @@
 ## 项目结构
 
 ```
-├── 爱心流水灯code/           # 程序源代码
+├── Keil_Project/            # 程序源代码
 │   ├── main.c               # 主程序代码
 │   └── Objects/             # 编译生成文件
-├── 爱心流水灯pcb工程/        # PCB设计文件
-│   ├── PCB_Project.PrjPcb   # PCB项目文件
-│   ├── Sheet1.SchDoc        # 原理图文件
-│   └── PcbLib1.PcbLib       # PCB库文件
+├── PCB_Project/             # PCB设计文件
+│   ├── love-flow-lamp.PrjPcb       # PCB项目文件
+│   ├── love-flow-lamp.SchDoc       # 原理图文件
+│   └── love-flow-lamp.PcbLib       # PCB库文件
 └── 实物图片/                 # 成品展示
 ```
 
