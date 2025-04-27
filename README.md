@@ -30,7 +30,8 @@
 ├── PCB_Project/             # PCB设计文件
 │   ├── love-flow-lamp.PrjPcb       # PCB项目文件
 │   ├── love-flow-lamp.SchDoc       # 原理图文件
-│   └── love-flow-lamp.PcbLib       # PCB库文件
+│   ├── love-flow-lamp.PcbLib       # PCB库文件
+│   └── love-flow-lamp.PcbDoc       # PCB图纸文件
 └── 实物图片/                 # 成品展示
 ```
 
